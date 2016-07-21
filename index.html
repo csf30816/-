@@ -1,1 +1,19 @@
 <!DOCTYPE html>
+<html>
+  <head>
+    <title>TTS Api Test</title>
+  </head>
+  <body>
+    <form onsubmit="say()">
+      <input id="text" type="text" name="say">
+      <input id="text_Submit" type="submit" value="Talk">
+    </form>
+    <script>
+      function say() {
+        var txt = document.getElementById("text").value
+        var myText = speechSynthesisUtteranceInstance.text;
+        speechSynthesisUtteranceInstance.text = txt;
+      }
+    </script>
+  </body>
+</html>
