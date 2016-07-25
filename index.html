@@ -10,6 +10,15 @@
     </form>
     <script>
       var index = lunr(function () {
+        this.pipeline.add(function (token, tokenIndex, tokens) {
+        // text processing in here
+      })
+
+      this.pipeline.after(lunr.stopWordFilter, function (token, tokenIndex, tokens) {
+        // text processing in here
+      })
+    })
+      var index = lunr(function () {
         this.field('title', {boost: 10})
         this.field('body')
         this.ref('id')
