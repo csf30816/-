@@ -6,13 +6,28 @@
   <body>
     <form onsubmit="say()">
       <input id="text" type="text">
-      <input id="text_Submit" type="submit" value="Talk">
+      <input id="text_Submit" type="submit" value="search">
     </form>
     <script>
-      function say() {
-        var txt = document.getElementById("text").value
-        var myText = speechSynthesisUtteranceInstance.text;
-        speechSynthesisUtteranceInstance.text = txt;
+      var index = lunr(function () {
+        this.field('title', {boost: 10})
+        this.field('body')
+        this.ref('id')
+      })
+      index.add({
+        id: 1,
+        title: 'Foo',
+        body: 'Foo foo foo!'
+      })
+
+      index.add({
+        id: 2,
+        title: 'Bar',
+        body: 'Bar bar bar!'
+      })
+      function sercahDocsFor() {
+        var i = document.getElementById("text").value;
+        index.search(i);
       }
     </script>
   </body>
