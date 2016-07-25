@@ -2,42 +2,10 @@
 <html>
   <head>
     <title>TTS Api Test</title>
+    <script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="../lunr.js" src="../lunr.js"></script>
   </head>
   <body>
-    <form onsubmit="sercahDocsFor()">
-      <input id="text" type="text">
+      <input id="text" type="search">
       <input id="text_Submit" type="submit" value="search">
-    </form>
-    <script>
-      var index = lunr(function () {
-        this.pipeline.add(function (token, tokenIndex, tokens) {
-        // text processing in here
-      })
-
-      this.pipeline.after(lunr.stopWordFilter, function (token, tokenIndex, tokens) {
-        // text processing in here
-      })
-    })
-      var index = lunr(function () {
-        this.field('title', {boost: 10})
-        this.field('body')
-        this.ref('id')
-      })
-      index.add({
-        id: 1,
-        title: 'Foo',
-        body: 'Foo foo foo!'
-      })
-
-      index.add({
-        id: 2,
-        title: 'Bar',
-        body: 'Bar bar bar!'
-      })
-      function sercahDocsFor() {
-        var i = document.getElementById("text").value;
-        index.search(i);
-      }
-    </script>
   </body>
 </html>
